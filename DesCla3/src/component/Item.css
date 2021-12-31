@@ -1,0 +1,33 @@
+.divProd{
+    width: 370px;
+    height: 430px;
+    border: 1px solid gray;
+}
+
+.divHead{
+    background-color: rgb(212, 211, 211);
+    font-weight: bold;
+    font-size: 22px;
+    height: 40px;
+    padding-top:8px;
+}
+
+.priceItem{
+    color:red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.buttonItem{
+    width: 230px;
+    height: 40px;
+}
+
+.buttonItem:hover{
+    background-color: red;
+    color:white;
+}
+
+.loadingItem{
+    width: 60px;
+}
