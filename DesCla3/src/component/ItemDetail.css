@@ -1,0 +1,29 @@
+.div{
+    width: 90%;
+    border: 1px solid gray;
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+.imgProduct{
+    width: 500px;
+    margin-left:20px;
+}
+
+.divImg{
+    width: 50%;
+    border: 1px solid gray;
+}
+
+.divTxt{
+    width: 50%;
+    border: 1px solid gray;
+}
+
+.table{
+    width: 100%;
+}
+
+.nombreProducto{
+    color:red;
+}
