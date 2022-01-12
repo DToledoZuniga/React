@@ -1,20 +1,23 @@
 import React from 'react'
 import './Item.css';
+import {Link, NavLink} from 'react-router-dom'
 
 function Item(props) {
     return (
-        <div key={props.producto.id}>
+        <div key={props.producto.id} className='divItemUnit'>
             <center>
                 <div className='divProd'>
                     <div className='divHead'>
-                        Notebook - {props.producto.marca}
+                        Zapatilla - {props.producto.marca}
                     </div>
-                    <div>
-                        <img src={props.producto.url} />
+                    <div >
+                        <img className='imgItem' src={props.producto.url} />
                         <label className='priceItem'>${props.producto.precio}</label> 
                     </div>
                     <div>
-                        <button className='buttonItem'> Detalle Producto </button>
+                        <Link to={`/detalle/${props.producto.id}`}>
+                            <button className='buttonItem'> Detalle Producto </button>
+                        </Link>
                     </div>
                 </div>
             </center>
