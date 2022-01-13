@@ -1,6 +1,6 @@
 import React from 'react'
 import './Item.css';
-import {Link, NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 function Item(props) {
     return (
@@ -8,7 +8,7 @@ function Item(props) {
             <center>
                 <div className='divProd'>
                     <div className='divHead'>
-                        Zapatilla - {props.producto.marca}
+                        {props.producto.marca} {props.producto.nombreCorto}
                     </div>
                     <div >
                         <img className='imgItem' src={props.producto.url} />

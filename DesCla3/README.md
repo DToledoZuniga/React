@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+-----------
+
+Este prototipo de aplicación esta pensado para una pagina web enfocada en la venta de zapatillas, actualmente se encuentra en desarrollo.
+En un futuro ideal es implementar la api de mercadolibre para poder simular un flujo correcto de compra.

@@ -3,6 +3,7 @@
     border: 1px solid gray;
     margin-bottom: 20px;
     margin-left: 5%;
+    height: 512px;
 }
 
 .imgProduct{
@@ -13,6 +14,7 @@
 .divImg{
     width: 50%;
     border: 1px solid gray;
+    height: 510px;
 }
 
 .divTxt{
@@ -26,4 +28,98 @@
 
 .nombreProducto{
     color:red;
+}
+
+.buttonItem{
+    
+    width: 50%;
+    height: 40px;
+    font-size:large;
+}
+
+.buttonItem:hover{
+    background-color: red;
+    color:white;
+}
+
+.divItemDetail{
+    padding: 40px;
+}
+
+.loadingItem{
+    width: 60px;
+}
+
+
+.tableStock{
+    width: 50%;
+    margin:auto;
+}
+
+.cant{
+    text-align: left;
+    padding-left:5px;
+    
+}
+
+.stock{
+    text-align: right;
+    padding-right:5px;
+    width: 50%;
+}
+
+.countMenos{
+    width: 5%;
+}
+
+.countMas{
+    width: 5%;
+    align-self: left;
+}
+
+.buttonCountMenos{
+    border-radius: 40px 0px 0px 40px;
+    width: 75px;
+    float:right;
+    border-right: hidden;
+    border: 1px;
+    height: 25px;
+}
+
+.buttonCountMenos:hover{
+    background-color: red;
+    color:white;
+}
+
+.buttonCountMas{
+    border-radius: 0px 40px 40px 0px;
+    width: 75px;
+    float:left;
+    border-left: hidden;
+    border: 1px;
+    height: 25px;
+}
+
+.buttonCountMas:hover{
+    background-color: red;
+    color:white;
+}
+
+.countText{
+    width: 100%;
+    display: block;
+    border: 1px;
+    border-left: hidden;
+    border-right: hidden;
+    height: 25px;
+}
+
+.pruebaDiv{
+    display: flex;
+    padding: 1em;
+    
+}
+
+.stockTxt{
+    font-weight: bold;
 }
