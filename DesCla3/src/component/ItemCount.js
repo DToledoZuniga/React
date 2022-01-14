@@ -1,48 +1,34 @@
 import React from 'react'
+import './ItemDetail.css';
 import {useState} from 'react'
 
 function ItemCount(props) {
-    const [contador, setContador] = useState(props.inicio);
-    const [stock, setStock] = useState(props.stock);
-
-    function sumarContador()
-    {
-        if(contador+1 <= stock)
-        {
-            setContador(contador+1)
-        }
-    }
-
-    function restarContador()
-    {
-        if(contador-1 >= props.inicio)
-        {
-            setContador(contador-1)
-        }
-    }
-
-    function agregarCarrito()
-    {
-        if(stock == 0)
-        {
-            alert("No hay Stock");
-        }
-        else{
-            alert("Se agregarón " + contador + " Productos al Carrito")
-            setStock(stock-contador)
-            setContador(1)
-        }
-    }
-
     return (
-        <div>
-            <h3>Stock : {stock}</h3>
-            <button onClick={restarContador}>-</button>
-            {contador}
-            <button onClick={sumarContador}>+</button>
-            <br/>
-            <button onClick={agregarCarrito}>Agregar al Carrito</button>
-        </div>
+            <div>
+                <table className='tableStock' cellSpacing={0}>
+                    <tbody>
+                        <tr>
+                            <td className='cant'>
+                                Cantidad
+                            </td>
+                            <td className='stock' colSpan={2}>
+                                Hay <label className='stockTxt'>{props.stock}</label> en Stock
+                            </td>
+                        </tr>
+                        <tr className='tableCount'>
+                            <td className='countMenos'> 
+                                <button onClick={props.restarContador} className='buttonCountMenos' >-</button>
+                            </td>
+                            <td >
+                                <button className='countText'>{props.contador}</button>
+                            </td>
+                            <td className='countMas'>
+                                <button onClick={props.sumarContador} className='buttonCountMas' >+</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
     )
 }
 

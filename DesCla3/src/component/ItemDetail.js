@@ -1,9 +1,31 @@
 import React from 'react'
 import './ItemDetail.css';
 import {useState} from 'react'
+import ItemCount from './ItemCount';
+import {Link} from 'react-router-dom'
+
+const ButtonAgg=({cambioBtn})=>{
+    return (
+        <button className='buttonItemDetail' onClick={cambioBtn}>Agregar al carrito</button>
+    )
+}
+
+const ButtonCart=()=>{
+    return(
+        <Link to='/cart'>
+            <button className='buttonItemDetailCart' >Ir al Carrito</button>
+        </Link>
+    )
+}
 
 const ItemDetail = ({producto}) => {
+    const[tipoBoton, setTipoBoton] = useState('agregar')
     const [contador, setContador] = useState(1);
+
+    const cambioBtn=()=>{
+        setTipoBoton('cart')
+        console.log('Seleccionaste ' + contador + ' productos')
+    }
 
     function sumarContador()
     {
@@ -36,34 +58,15 @@ const ItemDetail = ({producto}) => {
                         <br />
                         <h3>Precio : {producto.precio}</h3>
                         <br />
-                        <div>
-                            <table className='tableStock' cellSpacing={0}>
-                                <tbody>
-                                    <tr>
-                                        <td className='cant'>
-                                            Cantidad
-                                        </td>
-                                        <td className='stock' colSpan={2}>
-                                            Hay <label className='stockTxt'>{producto.stock}</label> en Stock
-                                        </td>
-                                    </tr>
-                                    <tr className='tableCount'>
-                                        <td className='countMenos'> 
-                                            <button onClick={restarContador} className='buttonCountMenos' >-</button>
-                                        </td>
-                                        <td >
-                                            <button className='countText'>{contador}</button>
-                                        </td>
-                                        <td className='countMas'>
-                                            <button onClick={sumarContador} className='buttonCountMas' >+</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <ItemCount stock={producto.stock} sumarContador={sumarContador} restarContador={restarContador} contador={contador}/>
                         <br />
                         <br />
-                        <button className='buttonItem'>Agregar al carrito</button>
+                        {
+                            tipoBoton === 'agregar' ?
+                                <ButtonAgg cambioBtn={cambioBtn} />
+                            :
+                                <ButtonCart />
+                        }
                     </td>
                 </tr>
                 </tbody>

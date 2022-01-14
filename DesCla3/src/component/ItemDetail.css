@@ -30,16 +30,32 @@
     color:red;
 }
 
-.buttonItem{
+.buttonItemDetail{
     
     width: 50%;
     height: 40px;
     font-size:large;
+    transition: 0.3s;
 }
 
-.buttonItem:hover{
+.buttonItemDetail:hover{
     background-color: red;
     color:white;
+}
+
+.buttonItemDetailCart{
+    
+    width: 50%;
+    height: 40px;
+    font-size:large;
+    background-color: red;
+    color:white;
+    transition: 0.3s;
+}
+
+.buttonItemDetailCart:hover{
+    background-color: transparent;
+    color:black;
 }
 
 .divItemDetail{
