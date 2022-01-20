@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './ItemDetail.css';
 import {useState} from 'react'
 import ItemCount from './ItemCount';
 import {Link} from 'react-router-dom'
+import { useCartContext } from '../context/CartContext';
 
 const ButtonAgg=({cambioBtn})=>{
     return (
@@ -18,30 +19,22 @@ const ButtonCart=()=>{
     )
 }
 
+
 const ItemDetail = ({producto}) => {
+    let contador = 1
+    const {cartList,aggCarrito} = useCartContext()
+
     const[tipoBoton, setTipoBoton] = useState('agregar')
-    const [contador, setContador] = useState(1);
 
     const cambioBtn=()=>{
         setTipoBoton('cart')
-        console.log('Seleccionaste ' + contador + ' productos')
+        aggCarrito({...producto, cantidad: contador})
     }
 
-    function sumarContador()
-    {
-        if(contador+1 <= producto.stock)
-        {
-            setContador(contador+1)
-        }
+    const saveCount=(count)=>{
+        contador = count
     }
-
-    function restarContador()
-    {
-        if(contador-1 >= 1)
-        {
-            setContador(contador-1)
-        }
-    }
+    
 
     return (
         <div className='div'>
@@ -58,12 +51,13 @@ const ItemDetail = ({producto}) => {
                         <br />
                         <h3>Precio : {producto.precio}</h3>
                         <br />
-                        <ItemCount stock={producto.stock} sumarContador={sumarContador} restarContador={restarContador} contador={contador}/>
+                        {/* <ItemCount stock={producto.stock} sumarContador={sumarContador} restarContador={restarContador} contador={contador}/> */}
+                        <ItemCount stock={producto.stock} saveCount={saveCount}/>
                         <br />
                         <br />
                         {
                             tipoBoton === 'agregar' ?
-                                <ButtonAgg cambioBtn={cambioBtn} />
+                                <ButtonAgg cambioBtn={cambioBtn}/>
                             :
                                 <ButtonCart />
                         }
