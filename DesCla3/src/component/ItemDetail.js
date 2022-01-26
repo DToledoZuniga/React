@@ -25,10 +25,10 @@ const ItemDetail = ({producto}) => {
     const {cartList,aggCarrito} = useCartContext()
 
     const[tipoBoton, setTipoBoton] = useState('agregar')
-
+    console.log(cartList)
     const cambioBtn=()=>{
         setTipoBoton('cart')
-        aggCarrito({...producto, cantidad: contador})
+        aggCarrito({...producto, cantidad: contador, total: (producto.precioInt * contador)})
     }
 
     const saveCount=(count)=>{
@@ -49,7 +49,7 @@ const ItemDetail = ({producto}) => {
                         <br />
                         <label>{producto.descripcion}</label>
                         <br />
-                        <h3>Precio : {producto.precio}</h3>
+                        <h3>Precio : $ {producto.precio}</h3>
                         <br />
                         {/* <ItemCount stock={producto.stock} sumarContador={sumarContador} restarContador={restarContador} contador={contador}/> */}
                         <ItemCount stock={producto.stock} saveCount={saveCount}/>

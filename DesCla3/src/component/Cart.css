@@ -1,0 +1,40 @@
+.imgProd{
+    width: 200px;
+}
+
+.tableCart{
+    text-align: center;
+    border: 1px solid black; 
+    width: 60%;
+}
+
+.titulo{
+    font-size: 30px;
+    font-weight: bold;
+    background-color: rgb(212, 211, 211);
+}
+
+.detalle{
+    font-size: 18px;
+}
+
+.eliminarProd{
+    width: 80px;
+    height: 30px;
+}
+
+.eliminarProd:hover{
+    background-color: red;
+    color:white;
+}
+
+.vaciarCarrito{
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+}
+
+.vaciarCarrito:hover{
+    background-color: red;
+    color:white;
+}
