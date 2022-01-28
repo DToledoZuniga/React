@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import './ItemDetail.css';
 import {useState} from 'react'
 import ItemCount from './ItemCount';
@@ -25,7 +25,7 @@ const ItemDetail = ({producto}) => {
     const {cartList,aggCarrito} = useCartContext()
 
     const[tipoBoton, setTipoBoton] = useState('agregar')
-    console.log(cartList)
+
     const cambioBtn=()=>{
         setTipoBoton('cart')
         aggCarrito({...producto, cantidad: contador, total: (producto.precioInt * contador)})
@@ -45,7 +45,7 @@ const ItemDetail = ({producto}) => {
                         <img className='imgProduct' src={producto.url}></img>
                     </td>
                     <td className='divTxt'>
-                        <h2 className='nombreProducto'>{producto.nombreProducto}</h2>
+                        <h2 className='nombreProducto'>{producto.nombre}</h2>
                         <br />
                         <label>{producto.descripcion}</label>
                         <br />

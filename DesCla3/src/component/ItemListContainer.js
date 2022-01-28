@@ -1,11 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import ItemCount from './ItemCount'
 import ItemList from './ItemList'
-import { getProductos } from './Mock'
 import {useState, useEffect} from 'react'
-
-
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore'
 
 function ItemListContainer(props) {
     
@@ -16,16 +13,21 @@ function ItemListContainer(props) {
     const [cargando, setCargando] = useState(true)
 
     useEffect(()=>{
+        const db = getFirestore()
+
+
         if(marca){
-            getProductos
-            .then(resp => setProductos(resp.filter(prod => prod.marca === marca)))
+            const queryCollection = query(collection(db,'Productos'), where('marca','==',marca))
+            getDocs(queryCollection)
+            .then(res=> setProductos(res.docs.map(prod => ({id: prod.id, ...prod.data()}))))
             .catch(err => console.log('Error del Proceso' + err))
             .finally(()=> setCargando(false))
         }
         else
         {
-            getProductos
-            .then(resp => setProductos(resp))
+            const queryCollection = query(collection(db,'Productos'))
+            getDocs(queryCollection)
+            .then(res=> setProductos(res.docs.map(prod => ({id: prod.id, ...prod.data()}))))
             .catch(err => console.log('Error del Proceso' + err))
             .finally(()=> setCargando(false))
         }

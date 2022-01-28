@@ -1,7 +1,6 @@
 import React from 'react'
 import Item from './Item'
 import './Item.css';
-import {useState} from 'react'
 
 
 function ItemList(props) {

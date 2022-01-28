@@ -1,8 +1,9 @@
 import {useEffect, useState} from 'react'
 import ItemDetail from './ItemDetail'
-import { getProductos } from './Mock'
 import { useParams } from 'react-router-dom'
 import './ItemDetail.css';
+import { getFirestore, getDoc, doc} from 'firebase/firestore'
+
 
 const ItemDetailContainer = () => {
     const[producto, setProducto] = useState({})
@@ -10,10 +11,12 @@ const ItemDetailContainer = () => {
 
     const {idDetalle} = useParams()
 
+    const db = getFirestore()
     useEffect(()=>{
         setTimeout(()=>{
-            getProductos
-            .then(resp => setProducto(resp.find(prod => prod.id === idDetalle)))
+            const queryProd = doc(db, 'Productos',idDetalle)
+            getDoc(queryProd)
+            .then(resp=> setProducto({id: resp.id, ...resp.data()}))
             .finally(()=> setCargando(false))
         },2000)
     },[idDetalle])
