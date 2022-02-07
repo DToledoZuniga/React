@@ -3,6 +3,7 @@
 [Demo de mi App][demo]
 
 Proyecto creado en React con fines estudiantiles.
+
 Sitio Web enfocado en la venta de Zapatillas Nike y Adidas
 
 ---
