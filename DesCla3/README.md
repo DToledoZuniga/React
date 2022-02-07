@@ -3,7 +3,6 @@
 [Demo de mi App][demo]
 
 Proyecto creado en React con fines estudiantiles.
-
 Sitio Web enfocado en la venta de Zapatillas Nike y Adidas
 
 ---
@@ -19,5 +18,9 @@ Sitio Web enfocado en la venta de Zapatillas Nike y Adidas
 + Formik 
     + Versión: 2.2.9
     + Libreria enfocada en la validación de Formularios
+
+Navegación
+
+![GifNav](https://raw.githubusercontent.com/DToledoZuniga/React/master/DesCla3/GIF%20Navegación/ProcesoCompra.gif)
 
 [demo]: <https://hardcore-swanson-5842e7.netlify.app>
