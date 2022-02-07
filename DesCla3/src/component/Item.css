@@ -4,7 +4,7 @@
     border: 1px solid gray;
 }
 
-.divHead{
+.divCabecera{
     background-color: rgb(212, 211, 211);
     font-weight: bold;
     font-size: 22px;
@@ -12,18 +12,18 @@
     padding-top:8px;
 }
 
-.priceItem{
+.precioProd{
     color:red;
     font-weight: bold;
     font-size: 20px;
 }
 
-.buttonItem{
+.botonProd{
     width: 230px;
     height: 40px;
 }
 
-.buttonItem:hover{
+.botonProd:hover{
     background-color: red;
     color:white;
 }
@@ -32,17 +32,17 @@
     width: 60px;
 }
 
-.imgItem{
+.imagenProducto{
     width: 300px;
     height: 270px;
 }
 
-.divItems{
+.divProductos{
     display: flex;
     justify-content: center;
     padding: 20px;
 }
 
-.divItemUnit{
+.divProductoUnitario{
     padding-left: 20px;
 }

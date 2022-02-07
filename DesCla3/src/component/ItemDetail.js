@@ -1,20 +1,19 @@
-import React from 'react'
 import './ItemDetail.css';
 import {useState} from 'react'
 import ItemCount from './ItemCount';
 import {Link} from 'react-router-dom'
 import { useCartContext } from '../context/CartContext';
 
-const ButtonAgg=({cambioBtn})=>{
+const BotonAgregar=({cambioBtn})=>{
     return (
-        <button className='buttonItemDetail' onClick={cambioBtn}>Agregar al carrito</button>
+        <button className='botonProdDetalle' onClick={cambioBtn}>Agregar al carrito</button>
     )
 }
 
-const ButtonCart=()=>{
+const BotonCarrito=()=>{
     return(
         <Link to='/cart'>
-            <button className='buttonItemDetailCart' >Ir al Carrito</button>
+            <button className='botonProdDetalleCarrito' >Ir al Carrito</button>
         </Link>
     )
 }
@@ -31,35 +30,34 @@ const ItemDetail = ({producto}) => {
         aggCarrito({...producto, cantidad: contador, total: (producto.precioInt * contador)})
     }
 
-    const saveCount=(count)=>{
+    const guardarCantidad=(count)=>{
         contador = count
     }
     
 
     return (
         <div className='div'>
-            <table className='table'>
+            <table className='tabla'>
                 <tbody>
                 <tr>
-                    <td className='divImg'>
-                        <img className='imgProduct' src={producto.url}></img>
+                    <td className='divImagen'>
+                        <img className='imagenProductoDetail' src={producto.url}></img>
                     </td>
-                    <td className='divTxt'>
+                    <td className='divTexto'>
                         <h2 className='nombreProducto'>{producto.nombre}</h2>
                         <br />
                         <label>{producto.descripcion}</label>
                         <br />
                         <h3>Precio : $ {producto.precio}</h3>
                         <br />
-                        {/* <ItemCount stock={producto.stock} sumarContador={sumarContador} restarContador={restarContador} contador={contador}/> */}
-                        <ItemCount stock={producto.stock} saveCount={saveCount}/>
+                        <ItemCount stock={producto.stock} guardarCantidad={guardarCantidad}/>
                         <br />
                         <br />
                         {
                             tipoBoton === 'agregar' ?
-                                <ButtonAgg cambioBtn={cambioBtn}/>
+                                <BotonAgregar cambioBtn={cambioBtn}/>
                             :
-                                <ButtonCart />
+                                <BotonCarrito />
                         }
                     </td>
                 </tr>

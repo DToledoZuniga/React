@@ -7,26 +7,25 @@ export function useCartContext(){
 }
 
 export const CartContextProvider =({children}) =>{
-
-    const [cartList, setCartList] = useState([])
+    
+    const [listaCarrito, setListaCarrito] = useState([])
     const [precioTotal, setPrecioTotal] = useState(0)
     const [cantidadProd, setCantidadProd] = useState(0)
 
-
     function aggCarrito(items){
 
-        const indice = cartList.findIndex(i => i.id === items.id)
+        const indice = listaCarrito.findIndex(i => i.id === items.id)
 
         if(indice >= 0){
-            let cantNew = cartList[indice].cantidad + items.cantidad
-            let totalNew = cartList[indice].total + items.total
-            cartList[indice].cantidad = cantNew
-            cartList[indice].total = totalNew
-            let newArray = [...cartList]
-            setCartList(newArray)
+            let cantNew = listaCarrito[indice].cantidad + items.cantidad
+            let totalNew = listaCarrito[indice].total + items.total
+            listaCarrito[indice].cantidad = cantNew
+            listaCarrito[indice].total = totalNew
+            let newArray = [...listaCarrito]
+            setListaCarrito(newArray)
         }
         else{
-            setCartList( [...cartList,items] )
+            setListaCarrito( [...listaCarrito,items] )
         }
         
         setPrecioTotal(precioTotal + items.total)
@@ -34,24 +33,24 @@ export const CartContextProvider =({children}) =>{
     }
 
     function limpiarCarrito(){
-        setCartList([])
+        setListaCarrito([])
         setCantidadProd(0)
         setPrecioTotal(0)
     }
 
     function eliminarProd(id){
-        const indice = cartList.findIndex(i => i.id === id)
-        setPrecioTotal(precioTotal - cartList[indice].total)
-        setCantidadProd(cantidadProd - cartList[indice].cantidad)
-        cartList.splice(indice,1)
+        const indice = listaCarrito.findIndex(i => i.id === id)
+        setPrecioTotal(precioTotal - listaCarrito[indice].total)
+        setCantidadProd(cantidadProd - listaCarrito[indice].cantidad)
+        listaCarrito.splice(indice,1)
 
-        let newArray = [...cartList]
-        setCartList(newArray)
+        let newArray = [...listaCarrito]
+        setListaCarrito(newArray)
     }
 
     return(
         <CartContext.Provider value={{
-            cartList,
+            listaCarrito,
             aggCarrito,
             limpiarCarrito,
             precioTotal,

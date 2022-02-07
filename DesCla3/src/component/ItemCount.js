@@ -1,4 +1,3 @@
-import React from 'react'
 import './ItemDetail.css';
 import {useState} from 'react'
 
@@ -11,7 +10,7 @@ function ItemCount(props) {
         if(contador+1 <= props.stock)
         {
             setContador(contador+1)
-            props.saveCount(contador+1)
+            props.guardarCantidad(contador+1)
         }
     }
 
@@ -20,31 +19,31 @@ function ItemCount(props) {
         if(contador-1 >= 1)
         {
             setContador(contador-1)
-            props.saveCount(contador-1)
+            props.guardarCantidad(contador-1)
         }
     }
 
     return (
             <div>
-                <table className='tableStock' cellSpacing={0}>
+                <table className='tablaStock' cellSpacing={0}>
                     <tbody>
                         <tr>
-                            <td className='cant'>
+                            <td className='cantidad'>
                                 Cantidad
                             </td>
                             <td className='stock' colSpan={2}>
-                                Hay <label className='stockTxt'>{props.stock}</label> en Stock
+                                Hay <label className='stockTexto'>{props.stock}</label> en Stock
                             </td>
                         </tr>
-                        <tr className='tableCount'>
-                            <td className='countMenos'> 
-                                <button onClick={restarContador} className='buttonCountMenos' >-</button>
+                        <tr>
+                            <td className='contadorMenos'> 
+                                <button onClick={restarContador} className='botonContadorMenos' >-</button>
                             </td>
                             <td >
-                                <button className='countText'>{contador}</button>
+                                <button className='contadorTexto'>{contador}</button>
                             </td>
-                            <td className='countMas'>
-                                <button onClick={sumarContador} className='buttonCountMas' >+</button>
+                            <td className='contadorMas'>
+                                <button onClick={sumarContador} className='botonContadorMas' >+</button>
                             </td>
                         </tr>
                     </tbody>

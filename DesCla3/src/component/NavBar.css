@@ -1,11 +1,11 @@
-.topnav {
+.divNav {
     overflow: hidden;
     background-color: gray;
     display: flex;
     height: 60px;
 }
 
-.topnav a {
+.divNav a {
     float: left;
     color: #f2f2f2;
     text-align: center;
@@ -29,11 +29,8 @@
     align-self: center;
 }
 
-.navCart{
+.navCarrito{
     width: 5%;
     align-self: center;
 }
 
-.imgLogo{
-    width: 60px;
-}

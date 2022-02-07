@@ -6,23 +6,23 @@
     height: 512px;
 }
 
-.imgProduct{
+.imagenProductoDetail{
     width: 500px;
     margin-left:20px;
 }
 
-.divImg{
+.divImagen{
     width: 50%;
     border: 1px solid gray;
     height: 510px;
 }
 
-.divTxt{
+.divTexto{
     width: 50%;
     border: 1px solid gray;
 }
 
-.table{
+.tabla{
     width: 100%;
 }
 
@@ -30,7 +30,7 @@
     color:red;
 }
 
-.buttonItemDetail{
+.botonProdDetalle{
     
     width: 50%;
     height: 40px;
@@ -38,12 +38,12 @@
     transition: 0.3s;
 }
 
-.buttonItemDetail:hover{
+.botonProdDetalle:hover{
     background-color: red;
     color:white;
 }
 
-.buttonItemDetailCart{
+.botonProdDetalleCarrito{
     
     width: 50%;
     height: 40px;
@@ -53,26 +53,26 @@
     transition: 0.3s;
 }
 
-.buttonItemDetailCart:hover{
+.botonProdDetalleCarrito:hover{
     background-color: transparent;
     color:black;
 }
 
-.divItemDetail{
+.divProdDetalle{
     padding: 40px;
 }
 
-.loadingItem{
+.cargandoProd{
     width: 60px;
 }
 
 
-.tableStock{
+.tablaStock{
     width: 50%;
     margin:auto;
 }
 
-.cant{
+.cantidad{
     text-align: left;
     padding-left:5px;
     
@@ -84,16 +84,16 @@
     width: 50%;
 }
 
-.countMenos{
+.contadorMenos{
     width: 5%;
 }
 
-.countMas{
+.contadorMas{
     width: 5%;
     align-self: left;
 }
 
-.buttonCountMenos{
+.botonContadorMenos{
     border-radius: 40px 0px 0px 40px;
     width: 75px;
     float:right;
@@ -102,12 +102,12 @@
     height: 25px;
 }
 
-.buttonCountMenos:hover{
+.botonContadorMenos:hover{
     background-color: red;
     color:white;
 }
 
-.buttonCountMas{
+.botonContadorMas{
     border-radius: 0px 40px 40px 0px;
     width: 75px;
     float:left;
@@ -116,12 +116,12 @@
     height: 25px;
 }
 
-.buttonCountMas:hover{
+.botonContadorMas:hover{
     background-color: red;
     color:white;
 }
 
-.countText{
+.contadorTexto{
     width: 100%;
     display: block;
     border: 1px;
@@ -130,12 +130,7 @@
     height: 25px;
 }
 
-.pruebaDiv{
-    display: flex;
-    padding: 1em;
-    
-}
 
-.stockTxt{
+.stockTexto{
     font-weight: bold;
 }

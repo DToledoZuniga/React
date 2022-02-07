@@ -3,6 +3,7 @@ import ItemDetail from './ItemDetail'
 import { useParams } from 'react-router-dom'
 import './ItemDetail.css';
 import { getFirestore, getDoc, doc} from 'firebase/firestore'
+import ErrorItem from './ErrorItem';
 
 
 const ItemDetailContainer = () => {
@@ -21,12 +22,13 @@ const ItemDetailContainer = () => {
         },2000)
     },[idDetalle])
 
-
     return (
-        <div className='divItemDetail'>
-            { cargando ? <img className='loadingItem' src="https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif"></img>
+        <div className='divProdDetalle'>
+            { cargando ? <img className='cargandoProd' src="https://www.superiorlawncareusa.com/wp-content/uploads/2020/05/loading-gif-png-5.gif"></img>
                 :
-                <ItemDetail producto={producto}/>
+                producto.descripcion !== undefined ? <ItemDetail producto={producto}/>
+                    :
+                    <ErrorItem />
             }
         </div>
     )

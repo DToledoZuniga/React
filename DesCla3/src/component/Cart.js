@@ -1,27 +1,27 @@
 import { useCartContext } from "../context/CartContext"
 import './Cart.css';
 import {Link} from 'react-router-dom'
-import { addDoc, collection, doc, documentId, getDocs, getFirestore, query, updateDoc, where, writeBatch} from 'firebase/firestore'
+import { addDoc, collection, documentId, getDocs, getFirestore, query, Timestamp, where, writeBatch} from 'firebase/firestore'
 import { useState } from "react";
-import Resumen from "./Resumen";
-
+import Summary from "./Summary";
+import FormCart from "./FormCart";
 
 const Cart = () => {
 
-    const {cartList, limpiarCarrito,eliminarProd,precioTotal, cantidadProd} = useCartContext()
-
+    const {listaCarrito, limpiarCarrito,eliminarProd,precioTotal, cantidadProd} = useCartContext()
+    
     const [compra, setCompra] = useState(false)
     const [idCompra, setIdCompra] = useState('')
     const [comprador, setComprador] = useState({})
     const [total, setTotal] = useState('')
 
-    const realizarCompra = async () =>{
+    const realizarCompra = async (nombre, apellido, email, telefono) =>{
         let orden = {}
-
-        orden.comprador = {nombre: 'Diego', email: 'diego@gmail.com', telefono: '1234567'}
+        orden.comprador = {nombre: nombre, apellido: apellido, email: email, telefono: telefono}
         orden.total = precioTotal
+        orden.fecha = Timestamp.fromDate(new Date())
 
-        orden.items = cartList.map(cartItem=>{
+        orden.items = listaCarrito.map(cartItem=>{
             const id = cartItem.id
             const nombre = cartItem.nombre
             const precio = cartItem.precio * cartItem.cantidad
@@ -33,23 +33,22 @@ const Cart = () => {
         setComprador(orden.comprador)
 
         const db = getFirestore()
-        const ordenCollection = collection(db, 'Ordenes')
-        await addDoc(ordenCollection, orden)
+        const coleccion = collection(db, 'Ordenes')
+        await addDoc(coleccion, orden)
         .then(res=> setIdCompra(res.id))
         .catch(err => console.log(err))
 
-        const queryCollection = collection(db,'Productos')
+        const consultaColeccion = collection(db,'Productos')
 
-        const queryActualizarStock = query(queryCollection, where(documentId(), 'in', cartList.map(item => item.id)))
+        const actualizarStock = query(consultaColeccion, where(documentId(), 'in', listaCarrito.map(item => item.id)))
 
         const batch = writeBatch(db)
 
-        await getDocs(queryActualizarStock)
+        await getDocs(actualizarStock)
         .then(resp => resp.docs.forEach(res => batch.update(res.ref,{
-            stock: res.data().stock - cartList.find(item => item.id === res.id).cantidad
+            stock: res.data().stock - listaCarrito.find(item => item.id === res.id).cantidad
         })))
         .catch(error => console.log(error))
-        .finally(()=> console.log('Stock Actualizado'))
 
         batch.commit()
         setTotal(precioTotal)
@@ -63,11 +62,11 @@ const Cart = () => {
             <div>
                 {
                     compra ?
-                        <Resumen idCompra={idCompra} comprador={comprador} total={total}/>
+                        <Summary idCompra={idCompra} comprador={comprador} total={total}/>
                     :
                         cantidadProd > 0 ?
                         <div>
-                            <table className="tableCart">
+                            <table className="tablaCarrito">
                                 <tbody>
                                     <tr className="titulo">
                                         <td>
@@ -89,10 +88,10 @@ const Cart = () => {
                                             <label></label>
                                         </td>
                                     </tr>
-                                {cartList.map(prod => 
+                                {listaCarrito.map(prod => 
                                         <tr key={prod.id} className="detalle">
                                             <td>
-                                                <img className="imgProd" src={prod.url}></img>
+                                                <img className="imagenProd" src={prod.url}></img>
                                             </td>
                                             <td>
                                                 <label>{prod.cantidad}</label>
@@ -116,7 +115,7 @@ const Cart = () => {
                             </table>
                             <h1>Total : $ {precioTotal}</h1>
                             <button onClick={limpiarCarrito} className="vaciarCarrito">Vaciar Carrito</button>
-                            <button onClick={realizarCompra} className="vaciarCarrito">Generar Orden</button>
+                            <FormCart realizarCompra={realizarCompra} />
                         </div>
                         :
                         <div>
