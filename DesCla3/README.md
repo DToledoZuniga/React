@@ -20,6 +20,8 @@ Sitio Web enfocado en la venta de Zapatillas Nike y Adidas
     + Versión: 2.2.9
     + Libreria enfocada en la validación de Formularios
 
+---
+
 ### Navegación Compra
 
 ![GifNav](https://raw.githubusercontent.com/DToledoZuniga/React/master/DesCla3/GIF%20Navegación/ProcesoCompra.gif)
